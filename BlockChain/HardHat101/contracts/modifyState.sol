@@ -25,7 +25,7 @@ contract Company {
                 return false;
             }
      }
-    function getSalary(string memory _name) view public returns (string memory) {
+    function getSalary(string memory _name) pure public returns (string memory) {
         return _name;
     }
 }

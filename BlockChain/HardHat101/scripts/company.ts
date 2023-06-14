@@ -1,5 +1,5 @@
 import { Address } from './../node_modules/ethereumjs-util/src/address';
-import { Contract } from 'hardhat/internal/hardhat-network/stack-traces/model';
+
 
 const { ethers } = require('ethers');
 require('dotenv').config();
@@ -17,7 +17,7 @@ async function main() {
   );
 
   // we then use the ContractFactory object to deploy an instance of the contract
-  const contract = await ModifyVariable.deploy();
+  const contract = await ModifyVariable.deploy({ gasLimit: 1000000 });
   const address: Address = await contract.owner();
   console.log(address);
 }
