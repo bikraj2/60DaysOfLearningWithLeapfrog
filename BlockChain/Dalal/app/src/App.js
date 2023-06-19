@@ -6,7 +6,8 @@ import Escrow from './Escrow';
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
 export async function approve(escrowContract, signer) {
-  const approveTxn = await escrowContract.connect(signer).approve();
+  const approveTxn = await escrowContract.connect(signer)
+  console.log(escrowContract.approve)
   await approveTxn.wait();
 }
 
