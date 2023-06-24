@@ -1,19 +1,13 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const [deployer] = await ethers.getSigners();
 
-  console.log('Deploying contracts with the account:', deployer.address);
-
-  const weiAmount = (await deployer.getBalance()).toString();
-
-  console.log('Account balance:', await ethers.utils.formatEther(weiAmount));
 
   // make sure to replace the "GoofyGoober" reference with your own ERC-20 name!
-  const Token = await ethers.getContractFactory('GoofyGoober');
-  const token = await Token.deploy();
+  const Storage = await ethers.getContractFactory('Storage');
+  const deployedStorage = await Storage.deploy();
 
-  console.log('Token address:', token.address);
+  console.log('Token address:', await deployedStorage.getAddress());
 }
 
 main()
