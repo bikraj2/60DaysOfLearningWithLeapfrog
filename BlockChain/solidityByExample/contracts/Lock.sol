@@ -10,7 +10,7 @@ contract Storage {
 
     //keccak256 (key+base Slot)
     constructor () {
-        map[90]=123;
+        map[90]=1;
         map[123]=1234;
     }
     //_ethGetStorageAt

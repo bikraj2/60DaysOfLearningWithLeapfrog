@@ -1,12 +1,19 @@
+// const {ethers} = require('hardhat')
+const address = '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0';
+const { toBeHex, zeroPadBytes, toUtf8Bytes, keccak256} = require('ethers')
 const {ethers} = require('hardhat')
-const address = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
-
+// const {hexZerorPad} = hre.ethers.utils;
 async function lookUp() {
-    const key = ethers.zeroPadBytes(ethers.toUtf8Bytes(21),30)
-    const baseSlot = ethers.zeroPadBytes(ethers.toUtf8Bytes(0x2), 30);
-    console.log(key,baseSlot);
-    const slot = ethers.keccak256(key+baseSlot);
-    console.log(key)
+ 
+let key = 90;
+let keyHex = '0x' + key.toString(16).padStart(62, '0');
+let baseSlot = 2;
+let baseSlotHex = '0x' + baseSlot.toString(16).padStart(62, '0');
+const hash = keccak256(toUtf8Bytes(keyHex+baseSlot))
+const value = await ethers.provider.getStorage(address,hash)
+console.log(parseInt(value))
+
+
   // const val = await ethers.provider.getStorage(address, '0x0');
   // console.log('', parseInt(val));
 }
